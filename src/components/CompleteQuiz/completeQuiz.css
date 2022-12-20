@@ -1,0 +1,6 @@
+.quiz {
+  width: 37.25rem;
+  height: 76.2rem;
+  padding: 2.25rem;
+  background-color: var(--lesson-container--bg);
+}

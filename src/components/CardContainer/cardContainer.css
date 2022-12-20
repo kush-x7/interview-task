@@ -1,0 +1,50 @@
+.cards-container {
+  padding: 2.5rem 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 3rem;
+  grid-row-gap: 3rem;
+}
+
+.arrow_plus_card_container {
+  position: relative;
+}
+
+.card {
+  background-color: var(--card-bg);
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem 1rem;
+
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  box-shadow: 2px 6px 18px 0px rgba(0, 0, 0, 0.75);
+}
+
+.arrow {
+  position: absolute;
+  top: 100%;
+
+  right: 0;
+  z-index: 10;
+
+  background-color: var(--arrow-bg);
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 50%;
+  margin-right: -2rem;
+}
+
+/* .arrow::before {
+      content: "";
+      display: block;
+      height: 1rem;
+      width: 1rem;
+      background-color: aquamarine;
+      transform: translateY(-1rem);
+    } */

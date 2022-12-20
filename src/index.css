@@ -3,6 +3,7 @@
 :root {
   --lesson-container--bg: #222222;
   --card-bg: #434242;
+  --arrow-bg: #d3eca7;
 }
 
 * {
@@ -21,55 +22,3 @@ body {
   font-size: 1.6rem;
 }
 
-.container {
-  width: 100vw;
-  height: 100vh;
-  background-color: #f7f7f7;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container__lesson {
-  max-width: 36.4rem;
-  height: 76.2rem;
-  background-color: var(--lesson-container--bg);
-}
-
-.container__lesson--heading {
-  height: 5.5rem;
-
-  padding: 0 1.2rem;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.title {
-  text-align: center;
-  font-size: 1.6rem;
-  padding: 2.5rem 1rem;
-}
-
-.container__lesson--cards-parent {
-  padding: 2.5rem 3rem;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 30px;
-  grid-row-gap: 30px;
-}
-
-.card {
-  background-color: var(--card-bg);
-  text-align: center;
-  font-size: 1.2rem;
-  padding: 2rem 1rem;
-  width: 100%;
-  /* height: 50px; */
-
-  box-shadow: 2px 6px 18px 0px rgba(0, 0, 0, 0.75);
-}
