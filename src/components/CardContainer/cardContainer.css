@@ -24,6 +24,32 @@
   align-items: center;
 
   box-shadow: 2px 6px 18px 0px rgba(0, 0, 0, 0.75);
+
+  border: 0.2rem solid var(--card-bg);
+  border-radius: 0.5rem;
+
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  position: relative;
+}
+
+.border-color {
+  border: 0.2rem solid #b25068;
+}
+
+.mergeArrow {
+  position: absolute;
+  top: 46%;
+  left: 0;
+  background-color: var(--arrow-bg);
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 50%;
+  margin-left: -0.3rem;
 }
 
 .arrow {
@@ -39,12 +65,3 @@
   border-radius: 50%;
   margin-right: -2rem;
 }
-
-/* .arrow::before {
-      content: "";
-      display: block;
-      height: 1rem;
-      width: 1rem;
-      background-color: aquamarine;
-      transform: translateY(-1rem);
-    } */

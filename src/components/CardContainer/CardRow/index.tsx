@@ -1,11 +1,23 @@
 import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
 import Draggable from "react-draggable";
+import { useState } from "react";
 
-const DraggableBox = ({ id, rightArrowHidden }: any) => {
+const DraggableBox = ({ id, rightArrowHidden, setIsArrowActive }: any) => {
   const updateXarrow = useXarrow();
   return (
     <Draggable onDrag={updateXarrow} onStop={updateXarrow}>
-      <div className={rightArrowHidden ? "" : "arrow"} id={id}></div>
+      <div
+        onMouseDownCapture={() => {
+          console.log("arrow ko pakad liya");
+          setIsArrowActive(true);
+        }}
+        onMouseUpCapture={() => {
+          console.log("arrow ko chor diya");
+          setIsArrowActive(false);
+        }}
+        className={rightArrowHidden ? "" : "arrow"}
+        id={id}
+      ></div>
     </Draggable>
   );
 };
@@ -21,14 +33,14 @@ const ArrowStyling = ({
       end={whichRowArrow}
       headColor={"#D3ECA7"}
       headShape={"circle"}
+      showHead={false}
       headSize={4}
       tailColor={"#D3ECA7"}
-      showTail={true}
+      showTail={rightCardPosition ? false : true}
       tailSize={4}
       lineColor={rightCardPosition ? "none" : "#D3ECA7"}
       strokeWidth={2}
       curveness={0.7}
-      showHead={false}
       tailShape={"circle"}
       //   passProps={{ cursor: "pointer", pointerEvents: "none" }}
       startAnchor={rightCardPosition ? "left" : "right"}
@@ -44,14 +56,36 @@ const CardRow = ({
   leftCardText,
   rightCardText,
 }: any) => {
+  const [isArrowActive, setIsArrowActive] = useState(false);
+  const [isCardActive, setIsCardActive] = useState(false);
+  // const [isborderShowing, setIsBorderShowing] = useState(false);
+
+  // const handleMouseEnter = (e: any) => {
+  //   if (isArrowActive) {
+  //     console.log("card ke andar agye");
+  //     e.target.classList.add("border-color");
+  //     setIsBorderShowing(true);
+
+  //     // e.target.classList.add("border-color");
+  //   }
+  // };
+
+  // const handleMouseLeave = (e: any) => {
+  //   console.log("card se bahar agye");
+  //   e.target.classList.remove("border-color");
+  // };
+
   return (
     <>
-      <div className="arrow_plus_card_container">
+      <div className="arrow_plus_card_container right-card">
         <Xwrapper>
           <div className="card" id={leftCardPosition}>
             {leftCardText}
           </div>
-          <DraggableBox id={whichRowArrow} />
+          <DraggableBox
+            id={whichRowArrow}
+            setIsArrowActive={setIsArrowActive}
+          />
           <ArrowStyling
             whichRowArrow={whichRowArrow}
             leftCardPosition={leftCardPosition}
@@ -61,8 +95,14 @@ const CardRow = ({
 
       <div className="arrow_plus_card_container">
         <Xwrapper>
-          <div className="card" id={rightCardPosition}>
+          <div
+            className="card tempBorder"
+            id={rightCardPosition}
+            onMouseEnter={(e: any) => {}}
+            onMouseOut={(e: any) => e.target.classList.remove("border-color")}
+          >
             {rightCardText}
+            <div className="mergeArrow"></div>
           </div>
           <DraggableBox id={whichRowArrow + 10} rightArrowHidden={true} />
           <ArrowStyling
@@ -71,31 +111,6 @@ const CardRow = ({
           />
         </Xwrapper>
       </div>
-      {/* <div className="arrow_plus_card_container">
-        <Xwrapper>
-          <div className="card" id="box-2">
-            Match me with the options, I am 2
-          </div>
-          <DraggableBox id={"arrow-2"} />
-          <Xarrow
-            start="box-2"
-            end="arrow-2"
-            startAnchor={"left"}
-            headColor={"#D3ECA7"}
-            lineColor={"#D3ECA7"}
-            tailColor={"#D3ECA7"}
-            strokeWidth={2}
-            headSize={4}
-            tailSize={4}
-            curveness={0.7}
-            headShape={"circle"}
-            showTail={true}
-            tailShape={"circle"}
-            passProps={{ cursor: "pointer", pointerEvents: "none" }}
-            showHead={false}
-          />
-        </Xwrapper>
-      </div> */}
     </>
   );
 };
