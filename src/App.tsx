@@ -1,4 +1,18 @@
 import "./App.css";
+import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
+import Draggable from "react-draggable";
+// import SimpleExample from "./SimpleExample";
+
+const DraggableBox = ({ id }: any) => {
+  const updateXarrow = useXarrow();
+  return (
+    <Draggable onDrag={updateXarrow} onStop={updateXarrow}>
+      <div className="card" id={id}>
+        {id}
+      </div>
+    </Draggable>
+  );
+};
 
 function App() {
   return (
@@ -18,12 +32,23 @@ function App() {
           </div>
 
           <div className="container__lesson--cards-parent">
-            <div className="card"></div>
-            <div className="card"></div>
-            <div className="card"></div>
-            <div className="card"></div>
-            <div className="card"></div>
-            <div className="card"></div>
+            <Xwrapper>
+              <div className="card" id="box-1">
+                Match me with the options, I am 2
+              </div>
+              <DraggableBox id={"box-2"} />
+              <Xarrow start="box-1" end="box-2" />
+            </Xwrapper>
+            <Xwrapper>
+              <div className="card" id="box-3"></div>
+              <DraggableBox id={"box-4"} />
+              <Xarrow start="box-3" end="box-4" />
+            </Xwrapper>
+            <Xwrapper>
+              <div className="card" id="box-5"></div>
+              <DraggableBox id={"box-6"} />
+              <Xarrow start="box-5" end="box-6" />
+            </Xwrapper>
           </div>
         </div>
       </main>
