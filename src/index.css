@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+:root {
+  --lesson-container--bg: #222222;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #eeeeee;
+  font-size: 1.6rem;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f7f7f7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container__lesson {
+  width: 35.4rem;
+  height: 76.2rem;
+  background-color: var(--lesson-container--bg);
+}
+
+.container__lesson--heading {
+  height: 5.5rem;
+
+  padding: 0 1.2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.6rem;
+  padding: 2.5rem 1rem;
+}
+
+.container__lesson--cards-parent {
+  padding: 2.5rem 3rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+}
+
+.card {
+  background-color: aqua;
+  width: 50px%;
+  height: 50px;
+}
