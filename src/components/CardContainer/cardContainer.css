@@ -52,6 +52,7 @@
   margin-left: -0.3rem;
   opacity: 0.2;
   z-index: 100;
+  touch-action: none;
 }
 
 .mergeArrow:hover {
@@ -72,4 +73,5 @@
   margin-right: -2rem;
 
   cursor: pointer;
+  touch-action: none;
 }

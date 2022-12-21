@@ -10,10 +10,12 @@ const DraggableBox = ({
   const updateXarrow = useXarrow();
 
   return (
-    <Draggable onDrag={updateXarrow} onStop={updateXarrow}>
-      <div
+    <Draggable onDrag={updateXarrow} onStop={updateXarrow} >
+      <div 
+      
         // When we press the mouse
         onPointerDown={(e: any) => {
+          // console.log(e);
           console.log("arrow ko click kara");
           setCurrentArrowId(e.target.id);
           setIsArrowActive(true);
