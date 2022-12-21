@@ -12,16 +12,20 @@ const CardContainer = () => {
 
   // When we bring the arrow inside that little circle at right
   const handlePointerEnter = (e: any) => {
-    if (isArrowActive) {
-      console.log("hum circle ke andar agye hai");
-      e.target.parentNode.classList.add("border-color");
+    if (!isArrowBelowCircle) {
+      if (isArrowActive) {
+        console.log("hum circle ke andar agye hai");
+        e.target.parentNode.classList.add("border-color");
+      }
     }
   };
   // When we are leaving the circle
   const handlePointerLeave = (e: any) => {
-    if (isArrowActive) {
-      console.log("hum circle ke bahar jarahe hai");
-      e.target.parentNode.classList.remove("border-color");
+    if (!isArrowBelowCircle) {
+      if (isArrowActive) {
+        console.log("hum circle ke bahar jarahe hai");
+        e.target.parentNode.classList.remove("border-color");
+      }
     }
   };
 
@@ -43,6 +47,7 @@ const CardContainer = () => {
     const classNameToBeRemoved = e.target.classList[1];
 
     if (totalClasses > 1) {
+      setIsArrowBelowCircle(false);
       e.target.classList.remove(`${classNameToBeRemoved}`);
       e.target.style.opacity = "0.2";
       e.target.style.zIndex = "1";
