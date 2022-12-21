@@ -12,20 +12,17 @@ const CardContainer = () => {
 
   // When we bring the arrow inside that little circle at right
   const handlePointerEnter = (e: any) => {
-    if (!isArrowBelowCircle) {
-      if (isArrowActive) {
-        console.log("hum circle ke andar agye hai");
-        e.target.parentNode.classList.add("border-color");
-      }
+    if (isArrowActive) {
+      console.log("hum circle ke andar agye hai");
+      e.target.parentNode.classList.add("border-color");
     }
   };
   // When we are leaving the circle
   const handlePointerLeave = (e: any) => {
-    if (!isArrowBelowCircle) {
-      if (isArrowActive) {
-        console.log("hum circle ke bahar jarahe hai");
-        e.target.parentNode.classList.remove("border-color");
-      }
+    if (e.target.classList.length > 1) return;
+    if (isArrowActive) {
+      console.log("hum circle ke bahar jarahe hai");
+      e.target.parentNode.classList.remove("border-color");
     }
   };
 
