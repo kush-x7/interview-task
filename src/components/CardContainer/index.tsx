@@ -59,8 +59,7 @@ const CardContainer = () => {
       removeBorder(e);
       setTimeout(() => {
         e.target.style.zIndex = "100";
-      }, 2000);
-      console.log("fhirse click kara");
+      }, 4000);
     }
   };
 

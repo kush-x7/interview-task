@@ -1,9 +1,10 @@
 import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
 import Draggable from "react-draggable";
 
+// This for the draggable arrow
 const DraggableBox = ({
   id,
-  rightArrowHidden,
+  hideArrow,
   setIsDraggableArrowActive,
   setCurrentArrowId,
 }: any) => {
@@ -12,24 +13,28 @@ const DraggableBox = ({
   return (
     <Draggable onDrag={updateXarrow} onStop={updateXarrow}>
       <div
-        // When we press the mouse
-        onPointerDown={(e: any) => {
-          // console.log(e);
-          console.log("arrow ko click kara");
-          setCurrentArrowId(e.target.id);
+        // When we start dragging our arrow
+        onPointerDown={(e: React.MouseEvent<HTMLElement>) => {
+          const element = e.target as Element;
+          setCurrentArrowId(element.id);
           setIsDraggableArrowActive(true);
         }}
         // When we release the mouse
         onPointerUpCapture={() => {
-          console.log("arrow ko chor diya");
           setIsDraggableArrowActive(false);
         }}
-        className={rightArrowHidden ? "" : "arrow"}
+        className={hideArrow ? "" : "arrow"}
         id={id}
       ></div>
     </Draggable>
   );
 };
+
+interface ArrowStylingProps {
+  leftCardPosition: string;
+  whichRowArrow: string;
+  rightCardPosition: string;
+}
 
 const ArrowStyling = ({
   leftCardPosition,
@@ -104,7 +109,7 @@ const CardRow = ({
               onPointerDownCapture={handlePointerDownCapture}
             ></div>
           </div>
-          <DraggableBox id={whichRowArrow + 10} rightArrowHidden={true} />
+          <DraggableBox id={whichRowArrow + 10} hideArrow={true} />
           <ArrowStyling
             whichRowArrow={whichRowArrow + 10}
             rightCardPosition={rightCardPosition}
