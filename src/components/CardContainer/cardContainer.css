@@ -8,7 +8,7 @@
   grid-row-gap: 3rem;
 }
 
-.arrow_plus_card_container {
+.card_with_attached_arrow--container {
   position: relative;
 }
 

@@ -1,11 +1,11 @@
 import "./cardContainer.css";
 import CardRow from "./CardRow";
 import { cardsData } from "./cardsData";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const CardContainer = () => {
+  // 1 State to check whether the user have clicked the arrow for dragging or not
   const [isArrowActive, setIsArrowActive] = useState(false);
-  const mergeArrow = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const handlePointerEnter = (e: any) => {
     if (isArrowActive) {
@@ -44,7 +44,6 @@ const CardContainer = () => {
               handlePointerEnter={handlePointerEnter}
               handlePointerLeave={handlePointerLeave}
               handlePointerUp={handlePointerUp}
-              mergeArrow={mergeArrow}
               isArrowActive={isArrowActive}
               setIsArrowActive={setIsArrowActive}
             />

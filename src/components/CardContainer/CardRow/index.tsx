@@ -49,6 +49,8 @@ const ArrowStyling = ({
 };
 
 const CardRow = ({
+  setIsArrowActive,
+  isArrowActive,
   leftCardPosition,
   rightCardPosition,
   whichRowArrow,
@@ -57,13 +59,10 @@ const CardRow = ({
   handlePointerEnter,
   handlePointerLeave,
   handlePointerUp,
-  mergeArrow,
-  isArrowActive,
-  setIsArrowActive,
 }: any) => {
   return (
     <>
-      <div className="arrow_plus_card_container right-card">
+      <div className="card_with_attached_arrow--container right-card">
         <Xwrapper>
           <div className="card" id={leftCardPosition}>
             {leftCardText}
@@ -80,12 +79,11 @@ const CardRow = ({
         </Xwrapper>
       </div>
 
-      <div className="arrow_plus_card_container">
+      <div className="card_with_attached_arrow--container">
         <Xwrapper>
           <div className="card tempBorder" id={rightCardPosition}>
             {rightCardText}
             <div
-              ref={mergeArrow}
               className="mergeArrow"
               onPointerEnter={handlePointerEnter}
               onPointerLeave={handlePointerLeave}
