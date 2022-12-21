@@ -1,19 +1,34 @@
 import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
 import Draggable from "react-draggable";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const DraggableBox = ({
   id,
   rightArrowHidden,
-  setIsArrowActive,
   isArrowActive,
+  setIsArrowActive,
+  setCurrentArrowId,
 }: any) => {
   const updateXarrow = useXarrow();
+
+  useEffect(() => {
+    console.log("Arrow state is: ", isArrowActive);
+  }, [isArrowActive]);
+
   return (
     <Draggable onDrag={updateXarrow} onStop={updateXarrow}>
       <div
-        onPointerDown={() => setIsArrowActive(true)}
-        onPointerUp={() => setIsArrowActive(false)}
+        // When we press the mouse
+        onPointerDown={(e: any) => {
+          console.log("arrow ko click kara");
+          setCurrentArrowId(e.target.id);
+          setIsArrowActive(true);
+        }}
+        // When we release the mouse
+        onPointerUpCapture={() => {
+          console.log("arrow ko chor diya");
+          setIsArrowActive(false);
+        }}
         className={rightArrowHidden ? "" : "arrow"}
         id={id}
       ></div>
@@ -59,6 +74,8 @@ const CardRow = ({
   handlePointerEnter,
   handlePointerLeave,
   handlePointerUp,
+  handlePointerDownCapture,
+  setCurrentArrowId,
 }: any) => {
   return (
     <>
@@ -71,6 +88,7 @@ const CardRow = ({
             id={whichRowArrow}
             setIsArrowActive={setIsArrowActive}
             isArrowActive={isArrowActive}
+            setCurrentArrowId={setCurrentArrowId}
           />
           <ArrowStyling
             whichRowArrow={whichRowArrow}
@@ -88,6 +106,7 @@ const CardRow = ({
               onPointerEnter={handlePointerEnter}
               onPointerLeave={handlePointerLeave}
               onPointerUpCapture={handlePointerUp}
+              onPointerDownCapture={handlePointerDownCapture}
             ></div>
           </div>
           <DraggableBox id={whichRowArrow + 10} rightArrowHidden={true} />
