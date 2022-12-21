@@ -3,3 +3,29 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.nav--logo {
+  background-color: #434242;
+  font-weight: bolder;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  transform: translateX(-1px);
+}
+
+.nav--text {
+  font-weight: 600;
+}
+
+.loader {
+  color: #b0b0b0;
+  height: 2.5rem;
+  width: 2.5rem;
+}

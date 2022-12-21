@@ -1,6 +1,7 @@
 .quiz {
   width: 37.25rem;
-  height: 76.2rem;
+  border-radius: 1rem;
   padding: 2.25rem;
   background-color: var(--lesson-container--bg);
+  box-shadow: 2px 6px 18px 0px rgba(0, 0, 0, 0.572);
 }
