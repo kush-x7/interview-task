@@ -5,7 +5,7 @@ import Title from "./Title";
 
 const CompleteQuiz = () => {
   return (
-    <div className="quiz">
+    <div className="quiz ">
       <Nav />
       <Title />
       <CardContainer />
