@@ -51,7 +51,7 @@ const CardContainer = () => {
       e.target.parentNode.classList.remove("border-color");
       setTimeout(() => {
         e.target.style.zIndex = "100";
-      }, 1000);
+      }, 2000);
       console.log("fhirse click kara");
     }
   };

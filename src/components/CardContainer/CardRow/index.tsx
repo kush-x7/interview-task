@@ -1,19 +1,13 @@
 import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
 import Draggable from "react-draggable";
-import { useState, useRef, useEffect } from "react";
 
 const DraggableBox = ({
   id,
   rightArrowHidden,
-  isArrowActive,
   setIsArrowActive,
   setCurrentArrowId,
 }: any) => {
   const updateXarrow = useXarrow();
-
-  useEffect(() => {
-    console.log("Arrow state is: ", isArrowActive);
-  }, [isArrowActive]);
 
   return (
     <Draggable onDrag={updateXarrow} onStop={updateXarrow}>

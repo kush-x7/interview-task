@@ -10,6 +10,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  touch-action: none;
+  /* pointer-events: none; */
 }
 
 html {
@@ -21,4 +23,3 @@ body {
   color: #eeeeee;
   font-size: 1.6rem;
 }
-

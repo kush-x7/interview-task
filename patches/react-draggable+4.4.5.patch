@@ -1,0 +1,26 @@
+diff --git a/node_modules/react-draggable/build/cjs/DraggableCore.js b/node_modules/react-draggable/build/cjs/DraggableCore.js
+index 07b05f1..0b79c76 100644
+--- a/node_modules/react-draggable/build/cjs/DraggableCore.js
++++ b/node_modules/react-draggable/build/cjs/DraggableCore.js
+@@ -170,7 +170,7 @@ var DraggableCore = /*#__PURE__*/function (_React$Component) {
+       // Important that this is after handle/cancel.
+ 
+ 
+-      if (e.type === 'touchstart') e.preventDefault(); // Set touch identifier in component state if this is a touch event. This allows us to
++      if (e.type === 'touchstart' && e.cancelable)  e.preventDefault();// Set touch identifier in component state if this is a touch event. This allows us to
+       // distinguish between individual touches on multitouch screens by identifying which
+       // touchpoint was set to this element.
+ 
+diff --git a/node_modules/react-draggable/build/web/react-draggable.min.js b/node_modules/react-draggable/build/web/react-draggable.min.js
+index 2057fc8..000af6c 100644
+--- a/node_modules/react-draggable/build/web/react-draggable.min.js
++++ b/node_modules/react-draggable/build/web/react-draggable.min.js
+@@ -857,7 +857,7 @@ var DraggableCore = /*#__PURE__*/function (_React$Component) {
+       // Important that this is after handle/cancel.
+ 
+ 
+-      if (e.type === 'touchstart') e.preventDefault(); // Set touch identifier in component state if this is a touch event. This allows us to
++      if (e.type === 'touchstart' && e.cancelable)  e.preventDefault(); // Set touch identifier in component state if this is a touch event. This allows us to
+       // distinguish between individual touches on multitouch screens by identifying which
+       // touchpoint was set to this element.
+ 
