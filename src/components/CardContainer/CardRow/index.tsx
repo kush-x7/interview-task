@@ -1,34 +1,7 @@
-import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
-import Draggable from "react-draggable";
+import Xarrow, { Xwrapper } from "react-xarrows";
+import DraggableArrow from "../DragableArrow";
 
 // This for the draggable arrow
-const DraggableBox = ({
-  id,
-  hideArrow,
-  setIsDraggableArrowActive,
-  setCurrentArrowId,
-}: any) => {
-  const updateXarrow = useXarrow();
-
-  return (
-    <Draggable onDrag={updateXarrow} onStop={updateXarrow}>
-      <div
-        // When we start dragging our arrow
-        onPointerDown={(e: React.MouseEvent<HTMLElement>) => {
-          const element = e.target as Element;
-          setCurrentArrowId(element.id);
-          setIsDraggableArrowActive(true);
-        }}
-        // When we release the mouse
-        onPointerUpCapture={() => {
-          setIsDraggableArrowActive(false);
-        }}
-        className={hideArrow ? "" : "arrow"}
-        id={id}
-      ></div>
-    </Draggable>
-  );
-};
 
 interface ArrowStylingProps {
   leftCardPosition: string;
@@ -56,7 +29,6 @@ const ArrowStyling = ({
       strokeWidth={2}
       curveness={0.7}
       tailShape={"circle"}
-      //   passProps={{ cursor: "pointer", pointerEvents: "none" }}
       startAnchor={rightCardPosition ? "left" : "right"}
       zIndex={10}
     />
@@ -84,10 +56,9 @@ const CardRow = ({
           <div className="card" id={leftCardPosition}>
             {leftCardText}
           </div>
-          <DraggableBox
+          <DraggableArrow
             id={whichRowArrow}
             setIsDraggableArrowActive={setIsDraggableArrowActive}
-            isDraggableArrowActive={isDraggableArrowActive}
             setCurrentArrowId={setCurrentArrowId}
           />
           <ArrowStyling
@@ -109,7 +80,7 @@ const CardRow = ({
               onPointerDownCapture={handlePointerDownCapture}
             ></div>
           </div>
-          <DraggableBox id={whichRowArrow + 10} hideArrow={true} />
+
           <ArrowStyling
             whichRowArrow={whichRowArrow + 10}
             rightCardPosition={rightCardPosition}
