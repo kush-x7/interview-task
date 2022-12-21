@@ -12,14 +12,10 @@ const DraggableBox = ({
   return (
     <Draggable onDrag={updateXarrow} onStop={updateXarrow}>
       <div
-        onPointerDown={() => {
-          console.log("arrow ko pakad liya");
-          setIsArrowActive(true);
-        }}
-        onPointerUp={() => {
-          console.log("arrow ko chor diya");
-          setIsArrowActive(false);
-        }}
+        onPointerDown={() => setIsArrowActive(true)}
+        onTouchStart={() => setIsArrowActive(true)}
+        onPointerUp={() => setIsArrowActive(false)}
+        onTouchEnd={() => setIsArrowActive(false)}
         className={rightArrowHidden ? "" : "arrow"}
         id={id}
       ></div>
