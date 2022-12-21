@@ -13,9 +13,7 @@ const DraggableBox = ({
     <Draggable onDrag={updateXarrow} onStop={updateXarrow}>
       <div
         onPointerDown={() => setIsArrowActive(true)}
-        onTouchStart={() => setIsArrowActive(true)}
         onPointerUp={() => setIsArrowActive(false)}
-        onTouchEnd={() => setIsArrowActive(false)}
         className={rightArrowHidden ? "" : "arrow"}
         id={id}
       ></div>
