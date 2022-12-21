@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+:root {
+  --lesson-container-background-color: #222222;
+  --container-background-color: #f7f7f7;
+  --card-background-color: #434242;
+  --body-background-color: #eeeeee;
+  --arrow-background-color: #d3eca7;
+  --loader-color: #b0b0b0;
+  --backspace-background-color: #434242;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--body-background-color);
+  font-size: 1.6rem;
+}

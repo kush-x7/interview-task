@@ -4,51 +4,59 @@ import { cardsData } from "./cardsData";
 import { useState } from "react";
 
 const CardContainer = () => {
-  // 1 State to check whether the user have clicked the arrow for dragging or not
-  const [isArrowActive, setIsArrowActive] = useState(false);
-  const [isCircleActive, setCircleActive] = useState(false);
-  const [isArrowBelowCircle, setIsArrowBelowCircle] = useState(false);
+  // 1 State to check whether the user have clicked on the arrow and started dragging it or not.
+  const [isDraggableArrowActive, setIsDraggableArrowActive] = useState(false);
   const [currentArrowId, setCurrentArrowId] = useState(undefined);
 
-  // When we bring the arrow inside that little circle at right
-  const handlePointerEnter = (e: any) => {
-    if (isArrowActive) {
-      console.log("hum circle ke andar agye hai");
-      e.target.parentNode.classList.add("border-color");
-    }
+  const addBorder = (e: Event & { target: HTMLElement }) => {
+    const parentNode = e.target.parentNode as NonNullable<HTMLElement>;
+    parentNode.classList.add("border-color");
   };
-  // When we are leaving the circle
-  const handlePointerLeave = (e: any) => {
-    if (e.target.classList.length > 1) return;
-    if (isArrowActive) {
-      console.log("hum circle ke bahar jarahe hai");
-      e.target.parentNode.classList.remove("border-color");
+
+  const removeBorder = (e: Event & { target: HTMLElement }) => {
+    const parentNode = e.target.parentNode as NonNullable<HTMLElement>;
+    parentNode.classList.remove("border-color");
+  };
+
+  // When we bring the arrow inside that little circle at right
+  const handlePointerEnter = (e: Event & { target: HTMLElement }) => {
+    if (isDraggableArrowActive) {
+      addBorder(e);
     }
   };
 
-  const handlePointerUp = (e: any) => {
-    if (isArrowActive) {
-      console.log("arrow circle ke andar hai");
-      setCircleActive(true);
-      setIsArrowBelowCircle(true);
-      e.target.classList.add(`${currentArrowId}`);
+  // When we are leaving the circle
+  const handlePointerLeave = (e: Event & { target: HTMLElement }) => {
+    const totalClassesArrLength = e.target.classList.length;
+    // We are checking length of classes of that little circle because initially it has only one and when we attach an arrow then we are adding it's class to this circle for the reference.
+    if (totalClassesArrLength > 1) return;
+    if (isDraggableArrowActive) {
+      removeBorder(e);
+    }
+  };
+
+  // So Now when we bring our draggable arrow and drop it on the circle || Releasing the mouse
+  const handlePointerUp = (e: Event & { target: HTMLElement }) => {
+    if (isDraggableArrowActive) {
+      const littleCircleClassList = e.target.classList;
+      littleCircleClassList.add(`${currentArrowId}`);
       setCurrentArrowId(undefined);
       e.target.style.opacity = "0";
-      e.target.parentNode.classList.add("border-color");
-      setIsArrowActive(false);
+      addBorder(e);
+      setIsDraggableArrowActive(false);
     }
   };
 
-  const handlePointerDownCapture = (e: any) => {
-    const totalClasses = e.target.classList.length;
-    const classNameToBeRemoved = e.target.classList[1];
+  // Again clicking the arrow that we left on our little circle
+  const handlePointerDownCapture = (e: Event & { target: HTMLElement }) => {
+    const littleCircleClassList = e.target.classList;
 
-    if (totalClasses > 1) {
-      setIsArrowBelowCircle(false);
-      e.target.classList.remove(`${classNameToBeRemoved}`);
+    if (littleCircleClassList.length > 1) {
+      const arrowNameToBeRemoved = e.target.classList[1];
+      littleCircleClassList.remove(`${arrowNameToBeRemoved}`);
       e.target.style.opacity = "0.2";
       e.target.style.zIndex = "1";
-      e.target.parentNode.classList.remove("border-color");
+      removeBorder(e);
       setTimeout(() => {
         e.target.style.zIndex = "100";
       }, 2000);
@@ -71,8 +79,8 @@ const CardContainer = () => {
               handlePointerEnter={handlePointerEnter}
               handlePointerLeave={handlePointerLeave}
               handlePointerUp={handlePointerUp}
-              isArrowActive={isArrowActive}
-              setIsArrowActive={setIsArrowActive}
+              isDraggableArrowActive={isDraggableArrowActive}
+              setIsDraggableArrowActive={setIsDraggableArrowActive}
               handlePointerDownCapture={handlePointerDownCapture}
               setCurrentArrowId={setCurrentArrowId}
             />

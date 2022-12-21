@@ -3,11 +3,9 @@ import CompleteQuiz from "./components/CompleteQuiz";
 
 function App() {
   return (
-    <>
-      <main className="container">
-        <CompleteQuiz />
-      </main>
-    </>
+    <main className="container">
+      <CompleteQuiz />
+    </main>
   );
 }
 

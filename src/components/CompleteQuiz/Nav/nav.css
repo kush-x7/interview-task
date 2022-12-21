@@ -1,11 +1,11 @@
 .nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
-.nav--logo {
-  background-color: #434242;
+.nav-logo {
+  background-color: var(--backspace-background-color);
   font-weight: bolder;
   border-radius: 50%;
   width: 3rem;
@@ -21,12 +21,12 @@
   transform: translateX(-1px);
 }
 
-.nav--text {
+.nav-title {
   font-weight: 600;
 }
 
 .loader {
-  color: #b0b0b0;
+  color: var(--loader-color);
   height: 2.5rem;
   width: 2.5rem;
 }
@@ -34,10 +34,12 @@
 .rotate-center {
   animation: rotate-center 4s ease-in-out 3s infinite both;
 }
+
 @keyframes rotate-center {
   0% {
     transform: rotate(0);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -52,9 +54,11 @@
     letter-spacing: -0.5em;
     opacity: 0;
   }
+
   40% {
     opacity: 0.6;
   }
+
   100% {
     opacity: 1;
   }
